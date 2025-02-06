@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Decrypt File</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        #file-upload {
+            margin: 20px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #218838;
+        }
+        #file-name {
+            margin-top: 10px;
+            color: #666;
+        }
+        .info {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Decrypt File</h1>
+        <div class="info">
+            <p>Upload the key file (.pem) you received during encryption.</p>
+        </div>
+        <form id="download-form" action="/download_data" method="POST" enctype="multipart/form-data">
+            <input type="file" id="file-upload" name="file" accept=".pem" style="display: none;">
+            <button type="button" class="btn" onclick="document.getElementById('file-upload').click()">
+                Select Key File
+            </button>
+            <div id="file-name"></div>
+            <button type="submit" class="btn" style="background-color: #007bff;">Decrypt File</button>
+        </form>
+        <a href="/home" class="btn" style="background-color: #6c757d;">Back to Home</a>
+    </div>
+
+    <script>
+        document.getElementById('file-upload').addEventListener('change', function(e) {
+            var fileName = e.target.files[0].name;
+            document.getElementById('file-name').textContent = 'Selected file: ' + fileName;
+        });
+    </script>
+</body>
+</html>
