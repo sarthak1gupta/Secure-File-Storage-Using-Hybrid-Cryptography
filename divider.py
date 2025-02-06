@@ -8,7 +8,7 @@ def divide():
 	FILE = './uploads/'+FILE[0]
 
 	MAX  = 1024*32						# 1	MB	-	max chapter size
-	BUF  = 50*1024*1024*1024  			# 50GB	-	memory buffer size
+	BUF  = 64*1024*1024			# 50GB	-	memory buffer size
 
 	chapters = 0
 	uglybuf  = ''
